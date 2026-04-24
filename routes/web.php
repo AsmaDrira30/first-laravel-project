@@ -1,29 +1,15 @@
-<?php
-
-use Illuminate\Support\Facades\Route;
-
-Route::get('/', function () {
-    return view('welcome');
-});
-//Route 2:page a propos
-Route::get('/about',function(){
-    return '<h1>A propos de nous </h1>
-            <p>nous sommes une equipe laravel!</p>';
-});
-//Route 3:contact
-Route::get('/contact',function(){
-    return '<h1>contactez-nous </h1>
-            <p>Email :contact@laravel.com</p>';
-});
-
-//Route 4:Services
-Route::get('/services',function(){
-    return '<h1>Nos services </h1>
-            <ul>
-                <li>Developpement web</li>
-                <li>Application Mobile</li>
-                </ul>';
-});
+<?php 
+ 
+use Illuminate\Support\Facades\Route; 
+use App\Http\Controllers\PageController; 
+ 
+Route::get('/', [PageController::class, 'home']); 
+ 
+Route::get('/about', [PageController::class, 'about']); 
+ 
+Route::get('/contact', [PageController::class, 'contact']); 
+ 
+Route::get('/services', [PageController::class, 'services']); 
 //Route avec parametre obligatoire
 Route::get('/utilisateur/{nom}', function ($nom){
     return "<h1>Profil de $nom</h1>
@@ -84,3 +70,12 @@ Route::get('/produits', function (){
     ];
     return view('produits',['produits'=>$produits]);
 });
+use App\Http\Controllers\TaskController;
+// Redirige / vers la liste des tâches
+Route::get('/', fn() => redirect()->route('tasks.index'));
+// Génère automatiquement les 7 routes CRUD
+Route::resource('tasks', TaskController::class);
+
+Route::get('/blog', [PageController::class, 'blog']);
+Route::get('/', fn()=>redirect()->route('tasks.index'));
+Route::resource('tasks',TaskController::class);

@@ -1,31 +1,24 @@
-<!DOCTYPE html>
-<html lang="fr">
+@extends('layouts.app')
 
-<head>
-    <meta charset="UTF-8">
-    <title>Accueil</title>
+@section('title', 'Accueil')
 
-    <style>
-        body {
-            font-family: Arial;
-            max-width: 800px;
-            margin: 50px auto;
-        }
+@section('content')
 
-        h1 {
-            color: #FF2D20;
-        }
-    </style>
-</head>
+    <h1 style="color: #FF2D20;">Bienvenue sur Mon Site</h1>
+    <p>Découvrez nos services et contactez-nous !</p>
 
-<body>
+    <div style="background: #f5f5f5; padding: 30px; margin-top: 30px; border-radius: 10px;">
+        <h2>Pourquoi nous choisir ?</h2>
+        <ul>
+            <li>Expertise Laravel</li>
+            <li>Support 24/7</li>
+            <li>Prix compétitifs</li>
+        </ul>
+    </div>
 
     <h1>Bienvenue sur mon site Laravel</h1>
-
     <p>Ceci est ma première vue Blade !</p>
 
     <p>Date actuelle : {{ date('d/m/Y') }}</p>
 
-</body>
-
-</html>
+@endsection
